@@ -1,0 +1,10 @@
+An Investigation Into Emergent Phenomena in Chaotic Systems of Multiple Pendulums
+
+Richard J. Pougnet
+McMaster University
+
+------------------------------
+
+This project numerically solves the system of three 2nd order coupled ODEs that describe the dynamics of three connected pendulums each of equal length and mass.
+
+The analysis is done using the Leapfrog Methods
