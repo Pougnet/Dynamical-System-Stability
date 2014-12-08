@@ -1,60 +1,43 @@
-#include <stdio.h>
-#include <stdlib.h>
+/**
+ * @file
+ * @author Richard J Pougnet <pougnerj@mcmaster.ca>
+ * @version 1.0
+ * @brief File contains function to analyze phase-space data
+ * @section DESCRIPTION
+ * 
+ * The file analyzes the phase space data of a specific pendulum
+ * in a many pendula system. It implements the Pougnet Algorithm
+ * to test if a set of initial conditions may lead to a stable 
+ * solution. It does so by creating a 2-tuple out of the pendulums 
+ * phase space, and sorting this by theta values. In the presence 
+ * of a stable solution, ie, an orbit, there will simultaneuosly 
+ * be repetition in the angular position and angular acceleration
+ * of the pendulum. This algorithm searches for such repetition.
+ */
 #include "sorter.h"
 #include "analyzer.h"
-
-//int main(int argc, char *argv[]) {
+/**
+ * @brief Analyze the phase-space of the pendulum, using Pougnet Algorithm.
+ * @param *theta Pointer to array of angular positions of the pendulum.
+ * @param *omega Pointer to array of angular acceleration of the pendulum.
+ * @param threshold The neighbourhood around points to search for repetition.
+ * @param size The number of datapoints.
+ * @return The number of intersections in phase space.
+ */
 int analyze(float *theta, float *omega, float threshold, int size) {	
-	//float *theta, *omega;	
 
-	//FILE *in;
-	//int size;
-
-	float theta1i, theta2i, theta3i;
-	//float threshold;
 	int matches = 0;
 
-	/*if ( argc != 3 ) {
-		printf("Invalid input, please try again\n");
-		return 1;
-	}
-
-	if ( (in = fopen (argv[1], "r")) == NULL ) {
-		printf("Cant read %s.\n", argv[1]);
-		return 1;
-	}
-
-	threshold =atof(argv[2]);
-	
-	fscanf(in, "%f %f %f", &thetai, &theta2i, &theta3i);
-
-	fscanf(in, "%d", &size);
-	
-	theta = (float *) calloc (sizeof (float), size);
-	omega = (float *) calloc (sizeof (float), size);
-
-	int i=0;
-
-	for ( i; i<size; i++ ) {
-		fscanf(in, "%f %f", &theta[i], &omega[i]);
-	}
-	*/
 	QuickSort(theta, omega, size);
  
 	int i=0;
 
 	for ( i; i<size-1; i++ ) {
-		if ((fabsf(theta[i+1]-theta[i])<threshold)&&(fabsf(omega[i+1]-omega[i])<threshold)){
+		if ((fabsf(theta[i+1]-theta[i])<threshold)&&
+				(fabsf(omega[i+1]-omega[i])<threshold)){
 			matches += 1;
 		}
 	}
 
-	/*if (matches>=minimumMatches) {
-		printf("%d %s\n",matches,argv[1]);
-	}
-
-	free(theta);
-	free(omega);
-	*/
 	return matches;
 }

@@ -1,5 +1,10 @@
+/**
+ * @file
+ * @author Richard J Pougnet <pougnerj@mcmaster.ca>
+ * @brief File implementing QuickSort for 2-tuples
+ *
+*/
 #include "sorter.h"
-#include "stdio.h"
 
 int Partition(float *A, float *B, int n)
 {	
@@ -30,7 +35,12 @@ int Partition(float *A, float *B, int n)
 	return i;
 }
 				
-
+/**
+ * @brief QuickSort the 2-tuple by A
+ * @param *A Pointer to array containing the element to sort by.
+ * @param *B Pointer to array fo the other element
+ * @param n The number of elements in the array.
+*/
 void QuickSort(float *A, float *B, int n)
 {
 	int q;

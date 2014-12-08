@@ -8,12 +8,10 @@
  * This file contains the set of 2nd order ODEs that the system obeys.
  * It contains functions for the angular acceleration of each pendulum.
  */
-
+#include "odes.h"
 /*! \var g
     \brief Gravitational Constant
 */
-#include "odes.h"
-
 #define g 9.80665
 /*! \var lengthPendulum
     \brief Length of the pendulms (m)

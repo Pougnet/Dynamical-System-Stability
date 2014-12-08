@@ -1,37 +1,37 @@
+/**
+ * @file
+ * @author Richard J Pougnet <pougnerj@mcmaster.ca>
+ * @version 1.0
+ * @brief File contains function implementing leapfrog integrator
+ */
 #include "odes.h"
 #include <math.h>
 #include <stdlib.h>
 #include "integrator.h"
-
+/**
+ * @brief Solve the time evolution of the three pendulums with 
+ * random initial conditions.
+ * @param tmax Time to evolve the sysetm for.
+ * @param timestep Timestep for integration.
+ * @param *theta1 Pointer to array of angular positions for the first pendulum.
+ * @param *theta2 Pointer to array of angular positions for the second pendulum.
+ * @param *theta3 Pointer to array of angular positions for the third pendulum.
+ * @param *omega1 Pointer to array of angular accelerations for the first pendulum.
+ * @param *omega2 Pointer to array of angular accelerations for the second pendulum.
+ * @param *omega3 Pointer to array of angular accelerations for the third pendulum.
+ */
 void integrate(float tmax, float timestep, float *theta1, float *theta2, float *theta3, float *omega1, float *omega2, float *omega3 ) {
-	//FILE *fp;
-	//float theta1,theta2,theta3;
-	//float omega1,omega2,omega3;
 	float alpha1i,alpha2i,alpha3i;
-	float thetamax=190;
-	//int i=0;
-	//float numberoftrials=1000;
-	//float tmax=10.;
-	//char filename[256];
+/*! \var thetamax
+		\brief Maximum angular position of each pendulum.
+*/
+	float thetamax=180;
 	float timestep2=timestep*timestep;
-
-	//for (i;i<numberoftrials;i++) {
-
+// Set initial conditions to random number with absolute value less than thetamax.
 	theta1[0]=thetamax*((float)rand()/(float)RAND_MAX-0.5);
 	theta2[0]=thetamax*((float)rand()/(float)RAND_MAX-0.5);
 	theta3[0]=thetamax*((float)rand()/(float)RAND_MAX-0.5);
-	//omega1=0.;
-	//omega2=0.;
-	//omega3=0.;
 	
-	//sprintf(filename, "data/%d.dat",i);
-	//fp = fopen(filename, "w");
-	//if (fp == NULL) {
-	//	printf("Couldnt open file\n");
-	//	exit(0);
-	//}
-	//fprintf(fp, "%d\n", (int)(tmax/timestep));
-	//fprintf(fp, "%f %f %f\n", theta1,theta2,theta3);
 	int i=0;
 	for (i;i<(int)(tmax/timestep);i++) {
 		alpha1i=alpha1(theta1[i],theta2[i]);
@@ -46,11 +46,6 @@ void integrate(float tmax, float timestep, float *theta1, float *theta2, float *
 		omega2[i+1] = omega2[i] + 0.5*(alpha2i+alpha2(theta1[i+1],theta2[i+1],theta3[i+1]))*timestep;
 		omega3[i+1] = omega3[i] + 0.5*(alpha3i+alpha3(theta2[i+1],theta3[i+1]))*timestep;
 
-		//fprintf(fp,"%.5f %.5f \t %.5f %.5f \t %.5f %.5f \n",theta1,omega1,theta2,omega2,theta3,omega3);
-
 
 			}
-		//fclose(fp);
-	//	}
-	//return 0;
 }
