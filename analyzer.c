@@ -16,6 +16,7 @@
  */
 #include "sorter.h"
 #include "analyzer.h"
+#include <math.h>
 /**
  * @brief Analyze the phase-space of the pendulum, using Pougnet Algorithm.
  * @param *theta Pointer to array of angular positions of the pendulum.
