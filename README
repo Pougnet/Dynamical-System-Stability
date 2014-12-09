@@ -5,6 +5,13 @@ McMaster University
 
 ------------------------------
 
-This project numerically solves the system of three 2nd order coupled ODEs that describe the dynamics of three connected pendulums each of equal length and mass.
+This project numerically finds stable solutions the system of three 2nd order 
+coupled ODEs that describe the dynamics of three coupled pendulums.
 
-The analysis is done using the Leapfrog Methods
+The ODEs are solved for random initial conditions, with the results being
+passed into the Pougnet Algorithm for analysis. This algorithm finds repetiton
+in the phase space of the system, and if sufficient repetition is found that
+set of initial conditions is said to potentially lead to a stable solution.
+
+The solutions that are flagged as being potentially stable are then saved
+to a user-defined directory for further analysis.
