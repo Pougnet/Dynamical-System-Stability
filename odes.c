@@ -37,7 +37,7 @@ float alpha1(float theta1, float theta2)
  * @brief Angular acceleration of the second pendulum
  * @param theta1 Angular position of the first pendulum.
  * @param theta2 Angular position of the second pendulum.
- * @param theta3 Angular position fo the third pendulum.
+ * @param theta3 Angular position of the third pendulum.
  * @return Angular acceleration of the second pendulum.
 */
 
