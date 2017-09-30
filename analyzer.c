@@ -11,7 +11,7 @@
  * solution. It does so by creating a 2-tuple out of the pendulums 
  * phase space, and sorting this by theta values. In the presence 
  * of a stable solution, ie, an orbit, there will simultaneuosly 
- * be repetition in the angular position and angular acceleration
+ * be repetition in the angular position and angular velocity
  * of the pendulum. This algorithm searches for such repetition.
  */
 #include "sorter.h"
@@ -20,7 +20,7 @@
 /**
  * @brief Analyze the phase-space of the pendulum, using Pougnet Algorithm.
  * @param *theta Pointer to array of angular positions of the pendulum.
- * @param *omega Pointer to array of angular acceleration of the pendulum.
+ * @param *omega Pointer to array of angular velocities of the pendulum.
  * @param threshold The neighbourhood around points to search for repetition.
  * @param size The number of datapoints.
  * @return The number of intersections in phase space.
